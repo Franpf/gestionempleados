@@ -1,0 +1,87 @@
+body {
+	background-color:rgba(0, 0, 0, 1);
+	margin: 1em 0 0 0;
+	padding: 0 0 0 0;
+}
+
+header {
+	overflow: hidden;
+	padding: 0 1em 1em 1em;
+	font-weight: normal;
+	color: white;
+}
+
+header img {
+	float: right;
+}
+
+header h1 {
+	padding-top:.5em;
+	border-bottom: 2px solid white;
+	font-size: 1.5em;
+}
+
+header h2 {
+	font-size: 0.9em;
+}
+
+form {
+	overflow: hidden;
+	background-color:rgba(255, 255, 255, 1);
+}
+
+#out {
+	width: 85%;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 2em auto 2em auto;
+}
+
+form div.out {
+	width: 50%;
+	float: left;
+}
+
+form div.in {
+	padding: 2em;
+}
+
+div.clear {
+	clear: both;
+}
+
+form label {
+	font-weight: bold;
+	font-size: 0.7em;
+}
+
+form input[type="text"] {
+	width: 100%;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px; 
+	border-bottom: 1px solid blue;
+	outline: none;
+}
+
+#esplst {
+	width: 100%;
+}
+
+p.esptxt {
+	margin: 0 0 .5em 0;
+}
+
+p.esp {
+	width: 90%;
+	margin: 0 auto 0.5em auto;
+}
+
+
+#enviar {
+	background-color:rgba(0, 0, 0, 1);
+	padding: 1em 2em 1em 2em;
+	margin: 0;
+	text-align: center;
+}
+
