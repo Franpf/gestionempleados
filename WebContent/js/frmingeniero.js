@@ -43,7 +43,7 @@ function limpiar(id) {
 	error = false;
 }
 
-function validar() {
+function validar(submittingTxt) {
 	
 	var nss = document.getElementById('nss').value.trim();
 	var nombre = document.getElementById('nombre').value.trim();
@@ -68,6 +68,8 @@ function validar() {
 	document.getElementById('nss').value = nss;
 	document.getElementById('nombre').value = nombre;
 	document.getElementById('salario').value = salario.replace(',', '.');
+	document.getElementById('enviar').dissabled = true;
+	document.getElementById('enviar').value = submittingTxt;
 	
 	var select = document.getElementById('esplst');
 	for (var i=0; i<select.options.length; i++)

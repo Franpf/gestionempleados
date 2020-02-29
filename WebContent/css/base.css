@@ -1,0 +1,107 @@
+body {
+	background-color:rgba(255, 255, 255, 1);
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color:rgba(0, 0, 0, 1);
+	padding: 1em 1em 1em 1em;
+	font-weight: normal;
+	color: white;
+}
+
+header div.head {
+	overflow: hidden;
+	margin-bottom: .5em;
+}
+
+header img {
+	float: right;
+}
+
+header h1 {
+	padding-top: .5em;
+	border-bottom: 2px solid white;
+	font-size: 1.5em;
+	margin-bottom: 0.1em;
+}
+
+header h2 {
+	font-size: 0.9em;
+	margin: 0;
+}
+
+header nav {
+	overflow: hidden;
+	border-radius: 3px;
+	background: linear-gradient(to bottom, darkslategray, gray);
+	padding: 1em;
+}
+
+header nav div.izda {
+	float: left;
+}
+
+header nav div.dcha {
+	float: right;
+}
+
+header nav span + span:before {
+    content: " | ";
+    padding: 0 .3em;
+}
+
+.menuitem {    font-family: verdana, arial, sans-serif;
+	border-radius: 3px;
+	padding: 10px;
+	color: white;
+	text-decoration: none;
+}
+
+.menuitem:link, .menuitem:visited {
+}
+
+.menuitem:hover {
+	background-color: darkgray;
+}
+
+div.pagina {
+	position: relative;
+	min-height: 100vh;
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+section.principal {
+  flex: 1 0 auto;
+}
+
+
+footer {
+	flex-shrink: 0;
+	background-color:rgba(0, 0, 0, 1);
+	font-weight: normal;
+	color: white;
+	padding: 1em;
+}
+
+div.sinpermiso {
+	width: 50%;
+	margin: auto;	
+}
+
+div.error {
+	text-align: center;
+	border: 1px solid red;
+	border-radius: 10px;
+	margin: 2em auto .5em auto;
+	padding: .5em 2em .5em 2em;
+	color: red;
+}

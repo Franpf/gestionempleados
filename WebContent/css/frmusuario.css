@@ -8,21 +8,8 @@ form {
 }
 
 div.form {
-	width: 85%;
-	margin: auto;
-}
-
-form div.out {
 	width: 50%;
-	float: left;
-}
-
-form div.in {
-	padding: 2em;
-}
-
-div.clear {
-	clear: both;
+	margin: auto;
 }
 
 form label {
@@ -30,26 +17,13 @@ form label {
 	font-size: 0.7em;
 }
 
-form input[type="text"] {
+form input[type="text"], form input[type="password"] {
 	width: 100%;
 	border-top: 0px;
 	border-left: 0px;
 	border-right: 0px; 
 	border-bottom: 1px solid blue;
 	outline: none;
-}
-
-#esplst {
-	width: 100%;
-}
-
-p.esptxt {
-	margin: 0 0 .5em 0;
-}
-
-p.esp {
-	width: 90%;
-	margin: 0 auto 0.5em auto;
 }
 
 form p.bottom {
@@ -59,4 +33,3 @@ form p.bottom {
 	margin: 0;
 	text-align: center;
 }
-
