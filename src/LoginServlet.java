@@ -1,20 +1,13 @@
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
@@ -83,19 +76,14 @@ public class LoginServlet extends HttpServlet {
 			resultSet = statement.executeQuery(sql);
 			if (resultSet.next()) {
 				String hash = resultSet.getString("password");
-				byte[] salt = Base64.getDecoder().decode(hash.substring(21, 53));
-				String hashBD = hash.substring(0, 21) + hash.substring(53);
-				SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-				KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 0xffff, 1024);
-				String hashFRM = Base64.getEncoder().encodeToString(Arrays.copyOf(factory.generateSecret(spec).getEncoded(), 129));
-				if (hashBD.equals(hashFRM)) {
+				if (HashPassword.checkBase64(password, hash)) {
 					request.getSession().setAttribute("usuario", id);
 					return Estado.OK;
 				} else
 					return Estado.FALLO_LOGIN;
 			} else 
 				return Estado.FALLO_LOGIN;
-		} catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException | NoSuchElementException e) {
+		} catch (SQLException | NoSuchElementException e) {
 			Logger.getLogger(AltaIngenieroServlet.class.getName()).log(Level.SEVERE, null, e);
 			return Estado.ERROR_LOGIN;
 		} finally {

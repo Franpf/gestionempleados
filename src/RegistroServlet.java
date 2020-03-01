@@ -1,21 +1,13 @@
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
@@ -79,24 +71,15 @@ public class RegistroServlet extends HttpServlet {
 		Statement statement = null;
 		ResultSet rs = null;
 		try {
-			SecureRandom random = new SecureRandom();
-			byte[] salt = new byte[24];
-			random.nextBytes(salt);
-			KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 0xffff, 1024);
-			SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-			byte[] hashPassword = Arrays.copyOf(factory.generateSecret(spec).getEncoded(), 129);
-			String hashPasswordBase64 = Base64.getEncoder().encodeToString(hashPassword);
-			String saltBase64 = Base64.getEncoder().encodeToString(salt);
 			connection = dataSource.getConnection();
 			statement = connection.createStatement();
-			String sql = String.format("insert into usuarios values ('%s', '%s')", id,
-					hashPasswordBase64.substring(0, 21) + saltBase64 + hashPasswordBase64.substring(21));
+			String sql = String.format("insert into usuarios values ('%s', '%s')", id, HashPassword.hashBase64(password));
 			statement.executeUpdate(sql);
 			return Estado.OK;
 		} catch (SQLIntegrityConstraintViolationException e) {
 			Logger.getLogger(AltaIngenieroServlet.class.getName()).log(Level.SEVERE, null, e);
 			return Estado.FALLO_REGISTRO;
-		} catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+		} catch (SQLException e) {
 			Logger.getLogger(AltaIngenieroServlet.class.getName()).log(Level.SEVERE, null, e);
 			return Estado.ERROR_REGISTRO;
 		} finally {
