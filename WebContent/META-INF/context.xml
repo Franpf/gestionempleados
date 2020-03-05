@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+<!-- Para despliegue en servidor -->
+<!--<Resource name="jdbc/ge" auth="Container" type="javax.sql.DataSource"
+     maxActive="100" maxIdle="30" maxWait="10000" removeAbandoned="true"
+     username="jplb" password="cifp2020" driverClassName="com.mysql.cj.jdbc.Driver"
+     url="jdbc:mysql:localhost/jplb" />-->
+     
+<!-- Para ejecución desde Eclipse -->
+<Resource name="jdbc/ge" auth="Container" type="javax.sql.DataSource"
+     maxActive="100" maxIdle="30" maxWait="10000" removeAbandoned="true"
+     username="jplb" password="cifp2020" driverClassName="com.mysql.cj.jdbc.Driver"
+     url="jdbc:mysql://10.19.8.200/jplb" />
+
+</Context>
